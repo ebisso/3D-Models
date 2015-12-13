@@ -1,3 +1,5 @@
+//This work by Eric Bissonnette is licensed under the Creative Commons Attribution 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by/4.0/.
+
 // Primary parameters
 tube_length = 80;
 tube_width = 40;
@@ -7,10 +9,10 @@ tube_wall_thickness = 1;
 sole_thickness = 4;
 sole_corner_radius = 1;
 rib_count = 4;
-rib_offset = 3;
-rib_width = 5;
+rib_offset = 2;
+rib_width = 2;
 rib_min_thickness = 0.5;
-rib_max_thickness = 2;
+rib_max_thickness = 4;
 rib_wall_thickness = 2;
 
 sole_width = tube_width;
@@ -41,10 +43,13 @@ module rib() {
             cube([sole_length - (2 * tube_wall_thickness) - (2 * rib_width), sole_width - (2 * tube_wall_thickness) - (2 * rib_width), rib_offset]);
         
             hull() {
-                translate([tube_wall_thickness + (2 * rib_width), tube_wall_thickness, rib_offset])
+                translate([tube_wall_thickness + (2 * rib_width), tube_wall_thickness, rib_offset + (rib_max_thickness / 2)])
                 cube([sole_length - (2 * tube_wall_thickness) - (4 * rib_width), sole_width - (2 * tube_wall_thickness), rib_min_thickness]);
-                translate([tube_wall_thickness, tube_wall_thickness + (2 * rib_width), rib_offset])
+                
+                translate([tube_wall_thickness, tube_wall_thickness + (2 * rib_width), rib_offset + (rib_max_thickness / 2)])
                 cube([sole_length - (2 * tube_wall_thickness), sole_width - (2 * tube_wall_thickness)  - (4 * rib_width), rib_min_thickness]);
+                
+                
                 translate([tube_wall_thickness + rib_width, tube_wall_thickness + rib_width, rib_offset])
                 cube([sole_length - (2 * tube_wall_thickness) - (2 * rib_width), sole_width - (2 * tube_wall_thickness) - (2 * rib_width), rib_max_thickness]);
             }
