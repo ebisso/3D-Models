@@ -1,17 +1,14 @@
 difference()
 {
     translate([0,0,0]) cube([30,90,8]);
-    translate([4,4,0]) cube([22,20,6]);
-    translate([4,4+20+4,0]) cube([22,20,6]);
-    translate([4,4+20+4+20+4,0]) cube([22,8,6]);
-    translate([4,4+20+4+20+4+8+4,0]) cube([22,4,6]);
-    translate([4,4+20+4+20+4+8+4+4+4,0]) cube([22,14,6]);
+    translate([2,2,0]) cube([26,20,6]);
+    translate([2,2+20+2,0]) cube([26,20,6]);
+    translate([2,2+20+2+20+2,0]) cube([26,15,6]);
+    translate([3,2+20+2+20+2+15+2,0]) cube([24,4,6]);
+    translate([2,2+20+2+20+2+15+2+4+2,0]) cube([26,19,6]);
 }
 
-translate([0,-8,0]) cube([8,8,12+8+4]);
-translate([22,-8,0]) cube([8,8,12+8+4]);
+translate([0,-8,0]) cube([4,8,13+8+3]);
+translate([26,-8,0]) cube([4,8,13+8+3]);
 
-translate([8,-8,0]) cube([14,8,8]);
-translate([8,-8,12+8]) cube([14,8,4]);
-
-translate([0,0,12+8]) cube([30,8,4]);
+translate([0,0,13+8]) cube([30,8,3]);
