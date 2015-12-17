@@ -5,14 +5,14 @@ translate([19,4,7]) cube([34,2,2]);
 
 translate([0,0,9])
 {
-    translate([0,0,0]) cube([21,6,8]);
-    translate([21+30,0,0]) cube([21,6,8]);
+    translate([-1,0,0]) cube([22,6,8]);
+    translate([21+30,0,0]) cube([22,6,8]);
         
     translate([21+4+0.2,0,0]) cube([22-0.4,4-0.2,6-0.2]);
 
-    translate([-4,0,0]) cube([4,8,8+13+4]);
-    translate([72,0,0]) cube([4,8,8+13+4]);
+    translate([-5,0,0]) cube([4,8,8+13+4]);
+    translate([73,0,0]) cube([4,8,8+13+4]);
 
-    translate([0,0,8+13]) cube([4,8,4]);
-    translate([72-4,0,8+13]) cube([4,8,4]);
+    translate([-1,0,8+13]) cube([5,8,4]);
+    translate([73-5,0,8+13]) cube([5,8,4]);
 }
