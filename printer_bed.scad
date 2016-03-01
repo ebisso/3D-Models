@@ -1,62 +1,78 @@
 // glass plate
-// translate([0,100,2.5]) cylinder(r=100,h=2.5);
+module plate()
+{
+    translate([0,108,17]) cylinder(r=100,h=2.5);
+}
 
 // aluminum extrusion
-difference()
+module extrusion()
 {
-    translate([-100,-10,-20]) cube([200,20,20]);
-    translate([-100,-3,-6]) cube([200,6,6]);
-    translate([-100,-5.5,-3]) cube([200,11,1.5]);
+    difference()
+    {
+        translate([-100,-10,-20]) cube([200,20,20]);
+        translate([-100,-3,-6]) cube([200,6,6]);
+        translate([-100,-5.5,-3]) cube([200,11,1.5]);
+    }
 }
 
 // M5-30 screw
-translate([50,0,-6]) union()
+module screw()
 {
-    translate([0,0,0]) cylinder(r=2.5,h=30);
-    translate([0,0,25]) cylinder(r=4.25,h=5);
+    translate([0,0,-6]) union()
+    {
+        translate([0,0,0]) cylinder(r=2.5,h=30);
+        translate([0,0,25]) cylinder(r=4.25,h=5);
+    }
 }
 
-// bottom mount
-/*difference()
+// Lower bracket
+module lower_bracket()
 {
-    union()
+    difference()
     {
-        translate([45,-5, 0]) cube([10,10,4]);
-        translate([45,-3, -1.5]) cube([10,6,1.5]);
-        
-        translate([50,-5,0]) cylinder(r=5,h=4);
-        translate([50,5,0]) cylinder(r=5,h=4);
-        //translate([50,-6,0]) cylinder(r=4,h=4);
-        //translate([50,6,0]) cylinder(r=4,h=4);
+        union()
+        {
+            translate([-12,-10,0]) cube([24,20,3]);
+            translate([-12,-2,-3]) cube ([4,4,3]);
+            translate([8,-2,-3]) cube ([4,4,3]);
+            translate([0,0,10]) cylinder(r=8,h=3);
+            
+            intersection()
+            {
+                union()
+                {
+                    translate([-12,-1,3]) cube([24,2,7]);
+                    translate([-1,-10,3]) cube([2,20,7]);
+                }
+                translate([0,0,3]) cylinder(r=8,h=7);       
+            }
+        }
+            
+        cylinder(r=3,h=13);
     }
-    
-  // M5-30 screw hole
-  translate([50,0,-6]) union()
-  {
-      translate([0,0,0]) cylinder(r=2.5,h=30);
-      translate([0,0,25]) cylinder(r=4.25,h=5);
-  }
-}*/
-
-
-translate([0,100,2.5]) cylinder(r=100,h=2.5);
-
-// top
-difference()
-{
-    union()
-    {
-        translate([50,-10, 0]) cylinder(r=5, h=18);
-        translate([50,10, 0]) cylinder(r=5, h=18);
-        translate([45,-10,0]) cube([10,20,18]);
-        
-        translate([50,-10, 0]) cylinder(r=5, h=8);
-        translate([50,10, 0]) cylinder(r=5, h=8);
-        translate([50,-10, 0]) cylinder(r=5, h=8);
-        translate([50,10, 0]) cylinder(r=5, h=8);
-        translate([40,-10,0]) cube([20,20,8]);
-    }
-    
-    translate([47.5,]) cube([]);
-    translate([]) cube([]);
 }
+
+
+// Upper bracket
+module upper_bracket()
+{
+    difference()
+    {
+        union()
+        {
+            hull()
+            {
+                translate([0,0,13]) cylinder(r=8,h=3.5);
+                translate([0,5,13]) cylinder(r=8,h=3.5);
+            }
+            translate([0,0,16.5]) cylinder(r=6, h=2.5);
+            translate([0,0,19]) cylinder(r1=6, r2=8, h=2);
+            translate([0,0,21]) cylinder(r=8,h=1);
+        }
+        translate([0,0,13]) cylinder(r=3,h=8);
+        translate([0,0,19]) cylinder(r=5, h=3);
+    }
+}
+
+//lower_bracket();
+upper_bracket();
